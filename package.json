@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "vite",
-    "build": "node vercel-build.js",
+    "build": "node -e \"require('./node_modules/vite/dist/node/cli.js')\" build",
     "preview": "vite preview"
   }
 }
