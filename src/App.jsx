@@ -3,7 +3,8 @@ import React, { useCallback, useEffect, useState } from "react";
 import Filters from "./components/Filters";
 import DataTable from "./components/DataTable";
 
-const BASE_URL = "https://mgnrega-final-1-eaft.onrender.com"; // <-- Render backend
+// Use environment variable for backend URL
+const BASE_URL = import.meta.env.VITE_API_URL || "https://mgnrega-final-1-eaft.onrender.com";
 
 export default function App() {
   const [selected, setSelected] = useState({ state: "", district: "" });
@@ -13,13 +14,11 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // callback for Filters component
   const handleFilterChange = useCallback(({ state, district }) => {
     setSelected({ state, district });
     setPage(0);
   }, []);
 
-  // fetch data when filters or page changes
   useEffect(() => {
     async function load() {
       setLoading(true);
@@ -40,7 +39,6 @@ export default function App() {
           setError(json.error || "API returned an error");
           setData([]);
         } else {
-          // server returns either { records: [...], total: N } or records array
           const records = json.records ?? json;
           setData(Array.isArray(records) ? records : []);
         }
@@ -53,9 +51,8 @@ export default function App() {
       }
     }
 
-    // only fetch if user selected something OR we still want default empty table
     load();
-  }, [selected, page]);
+  }, [selected, page, BASE_URL]);
 
   return (
     <div style={{ padding: 16 }}>
