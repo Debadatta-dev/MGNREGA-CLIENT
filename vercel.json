@@ -1,13 +1,5 @@
 {
-  "build": {
-    "env": {
-      "NODE_OPTIONS": "--max-old-space-size=4096"
-    }
-  },
-  "installCommand": "npm install && npm cache clean --force",
-  "buildCommand": "npm install vite@latest && npx vite build",
-  "outputDirectory": "dist",
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/(.*)", "destination": "/" }
   ]
 }
