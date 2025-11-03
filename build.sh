@@ -1,6 +1,5 @@
 ﻿#!/bin/bash
-echo "Setting execute permissions..."
-chmod +x ./node_modules/.bin/vite
-echo "Running build..."
-export NODE_OPTIONS="--max_old_space_size=4096"
-./node_modules/.bin/vite build
+echo "Installing dependencies..."
+npm ci
+echo "Running build with npx..."
+npx --no-install vite build --config vite.config.build.js
