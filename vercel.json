@@ -1,16 +1,13 @@
 {
-  "version": 2,
-  "builds": [{
-    "src": "package.json",
-    "use": "@vercel/node-builder",
-    "config": {
-      "buildCommand": "npx vite build",
-      "outputDirectory": "dist"
+  "buildCommand": "npm install -g vite && vite build",
+  "outputDirectory": "dist",
+  "devCommand": "vite",
+  "installCommand": "npm install",
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
-  }],
-  "routes": [
-    { "handle": "filesystem" },
-    { "src": "/assets/(.*)", "dest": "/assets/$1" },
-    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
