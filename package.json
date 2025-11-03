@@ -4,8 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "vercel-build": "npm install -g vite && vite build",
+    "build": "node build.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

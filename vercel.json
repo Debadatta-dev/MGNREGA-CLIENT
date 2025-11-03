@@ -1,9 +1,9 @@
 {
-  "buildCommand": "npm install -g vite && vite build",
+  "framework": null,
+  "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "devCommand": "vite",
   "installCommand": "npm install",
-  "framework": "vite",
+  "public": false,
   "rewrites": [
     {
       "source": "/(.*)",
